@@ -1,0 +1,8 @@
+{
+  "name": "task-dashboard",
+  "private": true,
+  "scripts": {
+    "build": "cd backend && npm install",
+    "start": "cd backend && node server.js"
+  }
+}
