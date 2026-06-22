@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulse — Task Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark">●</span>
+      <span class="brand-name">Pulse</span>
+    </div>
+
+    <div class="gauge-card">
+      <svg class="gauge" viewBox="0 0 140 140">
+        <circle class="gauge-track" cx="70" cy="70" r="58"></circle>
+        <circle class="gauge-progress" id="gaugeProgress" cx="70" cy="70" r="58"></circle>
+      </svg>
+      <div class="gauge-label">
+        <span class="gauge-pct" id="gaugePct">0%</span>
+        <span class="gauge-sub">complete</span>
+      </div>
+    </div>
+
+    <ul class="stat-list">
+      <li><span class="stat-dot dot-total"></span>Total <span class="stat-num" id="statTotal">0</span></li>
+      <li><span class="stat-dot dot-pending"></span>Pending <span class="stat-num" id="statPending">0</span></li>
+      <li><span class="stat-dot dot-done"></span>Done <span class="stat-num" id="statDone">0</span></li>
+    </ul>
+
+    <div class="conn-status" id="connStatus">
+      <span class="conn-dot"></span>
+      <span id="connText">Connecting…</span>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <header class="topbar">
+      <div>
+        <h1>Today's queue</h1>
+        <p class="sub" id="dateLine"></p>
+      </div>
+      <div class="filter-group" role="tablist" aria-label="Filter tasks">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="pending">Pending</button>
+        <button class="filter-btn" data-filter="completed">Done</button>
+      </div>
+    </header>
+
+    <!-- ---- Add task form ---- -->
+    <form id="taskForm" class="task-form">
+      <input type="text" id="titleInput" placeholder="What needs doing?" maxlength="120" required>
+      <input type="text" id="descInput" placeholder="Add a short note (optional)" maxlength="200">
+      <select id="priorityInput">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <input type="date" id="dueInput">
+      <button type="submit" class="btn-add">
+        <span>Add task</span>
+      </button>
+    </form>
+    <p class="form-error" id="formError"></p>
+
+    <!-- ---- Task grid ---- -->
+    <section class="task-grid" id="taskGrid" aria-live="polite">
+      <!-- task cards injected here by script.js -->
+    </section>
+
+    <p class="empty-state" id="emptyState">No tasks yet — add your first one above.</p>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
