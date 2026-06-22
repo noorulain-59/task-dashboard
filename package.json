@@ -1,6 +1,3 @@
 {
-  "scripts": {
-    "build": "npm install --prefix backend",
-    "start": "node backend/server.js"
-  }
+  "name": "task-dashboard-root"
 }
