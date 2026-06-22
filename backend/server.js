@@ -31,10 +31,10 @@ app.get('/api/health', (req, res) => {
 // ---------- Serve the frontend ----------
 // In production we serve the static frontend folder from the same Express app,
 // so only ONE service needs to be deployed.
-app.use(express.static(path.join(__dirname, '..', 'frontend')));
+app.use(express.static(path.join(__dirname, 'frontend')));
 app.get('*', (req, res, next) => {
   if (req.path.startsWith('/api')) return next(); // let unmatched API routes 404 properly
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
+  res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });
 
 // ---------- Connect to MongoDB, then start the server ----------
