@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "cd backend && npm install",
-    "start": "cd backend && node server.js"
+    "build": "npm install --prefix backend",
+    "start": "node backend/server.js"
   }
 }
